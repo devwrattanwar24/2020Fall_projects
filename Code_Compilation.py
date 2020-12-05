@@ -109,38 +109,38 @@ def race_pct_col(df):
 
     """
     race_pct = pd.DataFrame(df.apply(lambda row: race_percentage(row, 'PERP_RACE'), axis=1))
-    race_pct.rename(columns={0 : 'POP_BY_RACE_PCT'}, inplace=True)
+    race_pct.rename(columns={0: 'POP_BY_RACE_PCT'}, inplace=True)
     df = pd.concat([df, race_pct], axis=1)
     return df
 
 
 def race_percentage(row, colname) -> pd.core.series.Series:
-    # Population data retrieved from: https://worldpopulationreview.com/us-cities/new-york-city-ny-population
+    """
+    This function is used to return a pandas series that denotes the race percentage value
+    of the different races present in NYC.
 
-    # Total NYC population = 8,323,340
+    Population data retrieved from: https://worldpopulationreview.com/us-cities/new-york-city-ny-population
+    Total NYC population (2019) = 8,323,340
+    This function was retrieved from one of the project's from the Spring 2020 semester.
+    Link: https://github.com/rahulrohri/final_project_2020Sp
 
-    # Credit to Rahul + Megha (Link their github notebook)
+    :param row: Denotes that the operation has to be performed across rows
+    :param colname: Column name on which operation has to be performed
+    :return : Numeric value if a row match is found from specified values in the function
 
-    #     """
-    #     This function is used to return a pandas series that has the race percentage value of all the different
-    #     races present in NYC.
+    >>> df_dummy = pd.DataFrame({'Race':  ['AMERICAN INDIAN/ALASKAN NATIVE', 'ASIAN / PACIFIC ISLANDER', 'BLACK', 'BLACK HISPANIC', 'WHITE', 'WHITE HISPANIC', 'UNKNOWN', '(null)']})
+    >>> df_dummy.apply(lambda row: race_percentage(row,'Race'), axis=1)
+    0    0.0043
+    1    0.1400
+    2    0.2195
+    3    0.0233
+    4    0.3214
+    5    0.1053
+    6    0.1862
+    7    0.1862
+    dtype: float64
 
-    #     :param row: denotes that the operation has to be performed across rows
-    #     :param colname: Column name on which operation has to be done
-    #     :return : a specific numeric value if a row match is found
-    #     >>> data_dummy = {'Race':  ['AMERICAN INDIAN/ALASKAN NATIVE','ASIAN / PACIFIC ISLANDER', 'BLACK','BLACK HISPANIC','WHITE','WHITE HISPANIC','UNKNOWN/OTHER'],'Offense': ['FRAUDS', 'BURGLARY','HARRASSMENT 2','FORGERY','FRAUDS','FRAUDS','FRAUDS'],'Comp_no':[1,2,3,4,5,6,7]}
-    #     >>> df_dummy = pd.DataFrame (data_dummy, columns = ['Race','Offense','Comp_no'])
-    #     >>> df_dummy.apply (lambda row: race_percentage(row,'Race'), axis=1)
-    #     0    0.0043
-    #     1    0.1400
-    #     2    0.2195
-    #     3    0.0233
-    #     4    0.3214
-    #     5    0.1053
-    #     6    0.1862
-    #     dtype: float64
-
-    #     """
+    """
 
     if row[colname] == 'AMERICAN INDIAN/ALASKAN NATIVE':
         return 0.0043
@@ -158,3 +158,72 @@ def race_percentage(row, colname) -> pd.core.series.Series:
         return 0.1862
     if row[colname] == 'UNKNOWN':
         return 0.1862
+
+
+def age_distribution(row, colname) -> pd.core.series.Series:
+    """
+        This function is used to return a pandas series that denotes the race percentage value
+        of the different races present in NYC.
+
+        Age data retrieved from: https://www.statista.com/statistics/911456/new-york-population-share-age-group/
+        Total NYC population (2019) = 8,323,340
+        This function was retrieved from one of the project's from the Spring 2020 semester.
+        Link: https://github.com/rahulrohri/final_project_2020Sp
+
+        Age Groups and their respective percentages:
+        <18 : 23.2%
+        18-24 : 6.5%
+        25-44 : 27.2%
+        45-64 : 26.1%
+        65+ : 17%
+
+        :param row: Denotes that the operation has to be performed across rows
+        :param colname: Column name on which operation has to be performed
+        :return : Numeric value if a row match is found from specified values in the function
+
+        >>> df_dummy = pd.DataFrame({'Age':  ['25-44', '18-24', '45-64', '<18', '65+']})
+        >>> df_dummy.apply(lambda row: age_distribution(row,'Age'), axis=1)
+        0    0.272
+        1    0.065
+        2    0.261
+        3    0.232
+        4    0.170
+        dtype: float64
+
+        """
+
+    if row[colname] == '25-44':
+        return 0.272
+    if row[colname] == '18-24':
+        return 0.065
+    if row[colname] == '45-64':
+        return 0.261
+    if row[colname] == '<18':
+        return 0.232
+    if row[colname] == '65+':
+        return 0.17
+
+
+def age_pct_col(df):
+    """
+    This function allows us to add the age percentage column to an existing
+    dataframe that contains the 'AGE_GROUP' column. Addition of this new column
+    is an intermediate step to allow normalizing the values. Within this function
+    another function - age_distribution is used.
+
+    :param df: Dataframe to which the age percentage column has to be appended
+    :return: Dataframe with the added column - age percentage distribution
+
+    >>> df = pd.DataFrame({'AGE_GROUP': ['25-44', '18-24', '45-64', '<18', '65+']})
+    >>> age_pct_col(df)
+      AGE_GROUP  POP_BY_AGE_PCT
+    0     25-44           0.272
+    1     18-24           0.065
+    2     45-64           0.261
+    3       <18           0.232
+    4       65+           0.170
+    """
+    age_pct = pd.DataFrame(df.apply(lambda row: age_distribution(row, 'AGE_GROUP'), axis=1))
+    age_pct.rename(columns={0: 'POP_BY_AGE_PCT'}, inplace=True)
+    df = pd.concat([df, age_pct], axis=1)
+    return df
