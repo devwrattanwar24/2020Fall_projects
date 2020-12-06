@@ -114,7 +114,7 @@ def race_pct_col(df):
     return df
 
 
-def race_percentage(row, colname) -> pd.core.series.Series:
+def race_percentage(row, colname):
     """
     This function is used to return a pandas series that denotes the race percentage value
     of the different races present in NYC.
@@ -160,7 +160,7 @@ def race_percentage(row, colname) -> pd.core.series.Series:
         return 0.1862
 
 
-def age_distribution(row, colname) -> pd.core.series.Series:
+def age_distribution(row, colname):
     """
         This function is used to return a pandas series that denotes the race percentage value
         of the different races present in NYC.
@@ -229,13 +229,32 @@ def age_pct_col(df):
     return df
 
 
-
 # This function allows grouping the dataframe based on same values in particular column(s). This helps to determine
 # the count of the values through the aforementioned columns.
 def grouping_for_count(df, col_to_groupby1, col_to_groupby2, col_for_count):
+    """
+    This function allows grouping the dataframe based on same values in particular column(s). This helps to determine
+    the count of the values through the aforementioned columns.
+
+    :param df: The dataframe on which the pd.groupby() function will be applied
+    :param col_to_groupby1: The first column by which the grouping will be done
+    :param col_to_groupby2: The second column by which the grouping will be done
+    :param col_for_count: Column whose count values are to be determined
+    :return: The grouped dataframe is returned with the index being reset and appropriate column names
+
+    >>> dummy_df = pd.DataFrame({'AGE_GROUP': ['25-44', '18-24', '45-64', '<18', '65+', '65+'], 'POP_BY_AGE_PCT': [0.272, 0.065, 0.261, 0.232, 0.170, 0.170]})
+    >>> grouping_for_count(dummy_df, 'AGE_GROUP', 'POP_BY_AGE_PCT', 'AGE_GROUP')
+      AGE_GROUP  POP_BY_AGE_PCT  COUNT
+    0     18-24           0.065      1
+    1     25-44           0.272      1
+    2     45-64           0.261      1
+    3       65+           0.170      2
+    4       <18           0.232      1
+
+    """
     grouped_df = df.groupby([col_to_groupby1, col_to_groupby2])[col_for_count].count()
     grouped_df = pd.DataFrame(grouped_df)
-    grouped_df.rename(columns={col_for_count:'COUNT'}, inplace=True)
+    grouped_df.rename(columns={col_for_count: 'COUNT'}, inplace=True)
     grouped_df = grouped_df.reset_index()
     return grouped_df
 
@@ -243,12 +262,48 @@ def grouping_for_count(df, col_to_groupby1, col_to_groupby2, col_for_count):
 # This function helps to normalize the values in the dataset to supplement appropriate analysis. Normalizing
 # helps to scale the values to the entire population. Without normalization, a highly inaccurate analysis would be presented
 def normalized_values(df, count_values, pct_dist_values):
-    df['NORM_VALUES'] = (df[count_values]/df[pct_dist_values]).astype('int')
+    """
+
+    This function helps to normalize the values in the dataset to supplement appropriate analysis. Normalizing
+    helps to scale the values to the entire population. Without normalization, a highly inaccurate analysis would be presented
+
+    :param df: The dataframe to which the normalized values must be added
+    :param count_values: The count column which is the numerator for normalizing
+    :param pct_dist_values: The percentage distribution within total population column which is the denominator
+    :return: Returns the dataframe consisting of normalized values in the new 'NORM_VALUES' column
+
+    >>> dummy_df = pd.DataFrame({'COUNT': [750822, 356689, 25012, 45899, 12221], 'POP_BY_AGE_PCT': [0.272, 0.065, 0.261, 0.232, 0.170]})
+    >>> normalized_values(dummy_df, 'COUNT', 'POP_BY_AGE_PCT')
+        COUNT  POP_BY_AGE_PCT  NORM_VALUES
+    0  750822           0.272      2760375
+    1  356689           0.065      5487523
+    2   25012           0.261        95831
+    3   45899           0.232       197840
+    4   12221           0.170        71888
+    """
+    df['NORM_VALUES'] = (df[count_values] / df[pct_dist_values]).astype('int')
     return df
 
 
 # This function helps to transform the normalized values to a ratio/proportion. This helps to conclude the analysis and
 # thus, accept/reject the hypothesis
 def proportional_values(df):
-    df['PROP_VALUES'] = ((df['NORM_VALUES']/df['NORM_VALUES'].sum())*100).round(2)
+    """
+
+    This function helps to transform the normalized values to a ratio/proportion. This helps to conclude the analysis and
+    thus, accept/reject the hypothesis
+
+    :param df: The dataframe to which the proportional values must be added
+    :return: Returns the dataframe consisting of proportional values in the new 'PROP_VALUES' column
+
+    >>> dummy_df = pd.DataFrame({'NORM_VALUES': [750822, 356689, 25012, 45899, 12221]})
+    >>> proportional_values(dummy_df)
+       NORM_VALUES  PROP_VALUES
+    0       750822        63.06
+    1       356689        29.96
+    2        25012         2.10
+    3        45899         3.85
+    4        12221         1.03
+    """
+    df['PROP_VALUES'] = ((df['NORM_VALUES'] / df['NORM_VALUES'].sum()) * 100).round(2)
     return df
