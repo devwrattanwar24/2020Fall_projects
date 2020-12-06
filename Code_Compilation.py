@@ -227,3 +227,28 @@ def age_pct_col(df):
     age_pct.rename(columns={0: 'POP_BY_AGE_PCT'}, inplace=True)
     df = pd.concat([df, age_pct], axis=1)
     return df
+
+
+
+# This function allows grouping the dataframe based on same values in particular column(s). This helps to determine
+# the count of the values through the aforementioned columns.
+def grouping_for_count(df, col_to_groupby1, col_to_groupby2, col_for_count):
+    grouped_df = df.groupby([col_to_groupby1, col_to_groupby2])[col_for_count].count()
+    grouped_df = pd.DataFrame(grouped_df)
+    grouped_df.rename(columns={col_for_count:'COUNT'}, inplace=True)
+    grouped_df = grouped_df.reset_index()
+    return grouped_df
+
+
+# This function helps to normalize the values in the dataset to supplement appropriate analysis. Normalizing
+# helps to scale the values to the entire population. Without normalization, a highly inaccurate analysis would be presented
+def normalized_values(df, count_values, pct_dist_values):
+    df['NORM_VALUES'] = (df[count_values]/df[pct_dist_values]).astype('int')
+    return df
+
+
+# This function helps to transform the normalized values to a ratio/proportion. This helps to conclude the analysis and
+# thus, accept/reject the hypothesis
+def proportional_values(df):
+    df['PROP_VALUES'] = ((df['NORM_VALUES']/df['NORM_VALUES'].sum())*100).round(2)
+    return df
