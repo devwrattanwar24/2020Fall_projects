@@ -19,16 +19,23 @@ Although these data sources comprise of records from over a decade, we have focu
 
 # Hypotheses
 
-## Hypothesis 1 : 
+## Hypothesis 1 : A larger proportion of individuals who are arrested for the crime they commit are in the age group of 25 - 44
+
+### Conclusion : The graphs generated indicate that a larger proportion of individuals who are arrested belong in the age group of 18 - 23. Hence our hypothesis does not stand true.
+
+## Hypothesis 2 (A) : Males are more likely to be frisked than females (when stopped)
 ### Conclusion :
 
-## Hypothesis 2 : 
+## Hypothesis 2 (B) : Males are more likely to be arrested than females (when stopped)
 ### Conclusion :
 
-## Hypothesis 3 : 
+## Hypothesis 3 (A) : Individuals of a particular race are more likely to be frisked than any other race
 ### Conclusion :
 
-## Hypothesis 4 : 
+## Hypothesis 3 (B) : Individuals of a particular race are more likely to be frisked than any other race
+### Conclusion :
+
+## Hypothesis 4 : Complaints for crimes are usually reported in the same week/month that they are committed in. 
 ### Conclusion :
 
 ## References:
