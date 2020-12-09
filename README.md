@@ -127,6 +127,8 @@ Another cool visualization centered around geographical data would be plotting t
   <img src="https://github.com/devwrattanwar24/2020Fall_projects/blob/main/Graphs/HeatMap_Hour.PNG">
 </p>
 
+Link for Google Drive where the Future Scope Notebook is located - https://drive.google.com/drive/folders/1QSaWHZiDgzgDqJO5IKwbtJSkYClJu73G?usp=sharing </br>
+(Could not upload it to GitHub due to file size)
 
 ## References :
 https://worldpopulationreview.com/us-cities/new-york-city-ny-population </br>
