@@ -58,7 +58,7 @@ Although these data sources comprise of records from over a decade, we have focu
   <img src="https://github.com/devwrattanwar24/2020Fall_projects/blob/main/Graphs/Hyp2_A_ProbArrest.png">
 </p>
 
-### Conclusion : The graph indicates that a female stands a higher chance of being arrested than a female, when stopped. In this case, our hypothesis does not stand true.
+### Conclusion : The graph indicates that a female stands a higher chance of being arrested than a male, when stopped. In this case, our hypothesis does not stand true.
 
 ## Hypothesis 3 (A) : Individuals of a particular race are more likely to be frisked than any other race
 
