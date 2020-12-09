@@ -93,6 +93,41 @@ Although these data sources comprise of records from over a decade, we have focu
 
 ### Conclusion : From the graphs, we see that a majority of the crimes are reported within the first week / within the first month of the crime occuring. Hence, our hypothesis stands true.
 
+## Future Scope of this project
+
+We wanted to look into geographical heatmaps to determine hotspots in terms of complaints and arrests. The images below represent the heatmaps for the same. The heatmaps are insightful when you zoom in but from a zoomed out view, it is hard to distinguish between the two. This analysis could assist individuals moving into the city look for safe neighborhoods.
+
+<strong> Complaints Heatmap </strong>
+<p align="center">
+  <img src="https://github.com/devwrattanwar24/2020Fall_projects/blob/main/Graphs/Complaints_HeatMap.PNG">
+</p>
+
+<strong> Arrests Heatmap </strong>
+<p align="center">
+  <img src="https://github.com/devwrattanwar24/2020Fall_projects/blob/main/Graphs/Arrests_HeatMap.PNG">
+</p>
+
+Within the data records, multiple filters can be applied to visualize data points based on types of crimes etc. This could serve to be a good starting point to expand the analysis for this project. 
+
+Another cool visualization centered around geographical data would be plotting the location of the crimes reported/location of individuals arrest by the day of the year, or by the hour of the day. Some hypotheses which could be looked into using similar plots would be - #1 Burglaries occur more frequently in areas where the prices of the houses are high. #2 A particular crime occurs more frequently at this hour of the day/night.
+
+<strong> Plotting Locations of Arrests where the slider denotes the Day of the Year </strong>
+<p align="center">
+  <img src="https://github.com/devwrattanwar24/2020Fall_projects/blob/main/Graphs/HeatMap_DOY.PNG">
+</p>
+
+<strong> Plotting Locations of Complaints received where the slider denotes the Hour of the Day (1 AM) - High Number of Complaints </strong>
+<p align="center">
+  <img src="https://github.com/devwrattanwar24/2020Fall_projects/blob/main/Graphs/HeatMap_Hour_1AM.PNG">
+</p>
+
+
+<strong> Plotting Locations of Complaints received where the slider denotes the Hour of the Day (6 AM) - Less Number of Complaints </strong>
+<p align="center">
+  <img src="https://github.com/devwrattanwar24/2020Fall_projects/blob/main/Graphs/HeatMap_Hour.PNG">
+</p>
+
+
 ## References :
 https://worldpopulationreview.com/us-cities/new-york-city-ny-population </br>
 https://github.com/rahulrohri/final_project_2020Sp </br>
