@@ -67,7 +67,7 @@ Although these data sources comprise of records from over a decade, we have focu
 </p>
 
 <p align="center">
-  <img src="https://github.com/devwrattanwar24/2020Fall_projects/blob/main/Graphs/Hyp3_A_Prob_Arrest.png">
+  <img src="https://github.com/devwrattanwar24/2020Fall_projects/blob/main/Graphs/Hyp3_B_Prob_Frisk.png">
 </p>
 
 ### Conclusion : From the graph, it is tough to either confirm or deny our hypothesis since the probability of being frisked for the Black Hispanic race and (null)/UNKNOWN is the same. However, if the UNKNOWN race is neglected, we notice that the chances of you being frisked are higher if you are an individual who is Black Hispanic. 
@@ -75,7 +75,7 @@ Although these data sources comprise of records from over a decade, we have focu
 ## Hypothesis 3 (B) : Individuals of a particular race are more likely to be arrested than any other race
 
 <p align="center">
-  <img src="https://github.com/devwrattanwar24/2020Fall_projects/blob/main/Graphs/Hyp3_B_Prob_Frisk.png">
+  <img src="https://github.com/devwrattanwar24/2020Fall_projects/blob/main/Graphs/Hyp3_A_Prob_Arrest.png">
 </p>
 
 ### Conclusion : From the graph, we can see that the probability of you being arrested is higher if you are an individual whose race is White. Had both, 3(A) and 3(B) revealed that a particular race has a higher probability of being arrested/frisked, we could have said that prejudice against a particular race is witnessed. However, when looking at both graphs holistically, we can say that individuals from one race are not targeted in particular. 
