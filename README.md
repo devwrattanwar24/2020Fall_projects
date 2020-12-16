@@ -44,7 +44,7 @@ Although these data sources comprise of records from over a decade, we have focu
 
 <p align="center">
   <img src="https://github.com/devwrattanwar24/2020Fall_projects/blob/main/Graphs/Hyp2_VC.PNG">
-</p>
+</p> 
 
 <p align="center">
   <img src="https://github.com/devwrattanwar24/2020Fall_projects/blob/main/Graphs/Hyp2_A_ProbFrisk.png">
