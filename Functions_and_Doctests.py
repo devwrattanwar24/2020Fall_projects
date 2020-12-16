@@ -1,8 +1,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
+import numpy as np
 
-os.chdir('D:/Downloads/')
+# Change directory by uncommenting and passing the appropriate directory path
+# os.chdir('D:/Downloads/')
 
 # This function generates a series to denote age group distribution
 def age_distribution(row, colname) -> pd.core.series.Series:
@@ -68,6 +70,19 @@ def age_pct_col(df):
     2     45-64           0.261
     3       <18           0.232
     4       65+           0.170
+
+    >>> df = pd.read_csv('dummy_doctest_files/Age_group.csv')
+    >>> age_pct_col(df)
+      AGE_GROUP  POP_BY_AGE_PCT
+    0     25-44           0.272
+    1     18-24           0.065
+    2     45-64           0.261
+    3     45-64           0.261
+    4       <18           0.232
+    5     25-44           0.272
+    6     18-24           0.065
+    7     45-64           0.261
+    8       <18           0.232
     """
     age_pct = pd.DataFrame(df.apply(lambda row: age_distribution(row, 'AGE_GROUP'), axis=1))
     age_pct.rename(columns={0: 'POP_BY_AGE_PCT'}, inplace=True)
@@ -216,6 +231,19 @@ def race_pct_col(df, col):
     5     6                  WHITE HISPANIC           0.1053
     6     7                          (null)           0.1862
     7     8                         UNKNOWN           0.1862
+
+    >>> df = pd.read_csv('dummy_doctest_files/Race_group.csv')
+    >>> race_pct_col(df, 'SUSPECT_RACE_DESCRIPTION')
+       SUSPECT_RACE_DESCRIPTION  POP_BY_RACE_PCT
+    0                    (null)           0.1862
+    1  ASIAN / PACIFIC ISLANDER           0.1400
+    2                     BLACK           0.2195
+    3            BLACK HISPANIC           0.0233
+    4                     WHITE           0.3214
+    5            WHITE HISPANIC           0.1053
+    6            BLACK HISPANIC           0.0233
+    7                    (null)           0.1862
+    8  ASIAN / PACIFIC ISLANDER           0.1400
     """
     
     race_pct = pd.DataFrame(df.apply(lambda row: race_percentage(row, col), axis=1))
@@ -341,10 +369,24 @@ def sex_pct_col(df, col):
 
     >>> df = pd.DataFrame({'SEX': ['MALE', 'FEMALE', 'FEMALE']})
     >>> sex_pct_col(df, 'SEX')
-            SEX  POP_BY_SEX_PCT
-    0      MALE          0.4767
-    1    FEMALE          0.5233
-    2    FEMALE          0.5233
+          SEX  POP_BY_SEX_PCT
+    0    MALE          0.4767
+    1  FEMALE          0.5233
+    2  FEMALE          0.5233
+
+    >>> df = pd.read_csv('dummy_doctest_files/Gender_group.csv')
+    >>> sex_pct_col(df, 'SUSPECT_SEX')
+      SUSPECT_SEX  POP_BY_SEX_PCT
+    0        MALE          0.4767
+    1        MALE          0.4767
+    2      FEMALE          0.5233
+    3      FEMALE          0.5233
+    4      FEMALE          0.5233
+    5        MALE          0.4767
+    6      FEMALE          0.5233
+    7        MALE          0.4767
+    8        MALE          0.4767
+
     """
     sex_pct = pd.DataFrame(df.apply(lambda row: sex_distribution(row, col), axis=1))
     sex_pct.rename(columns={0: 'POP_BY_SEX_PCT'}, inplace=True)
