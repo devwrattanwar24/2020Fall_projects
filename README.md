@@ -116,15 +116,22 @@ Another cool visualization centered around geographical data would be plotting t
   <img src="https://github.com/devwrattanwar24/2020Fall_projects/blob/main/Graphs/HeatMap_DOY.PNG">
 </p>
 
+<p align="center">
+  <img src="https://github.com/devwrattanwar24/2020Fall_projects/blob/main/Graphs/Arrests_by_DOY.gif">
+</p>
+
 <strong> Plotting Locations of Complaints received where the slider denotes the Hour of the Day (1 AM) - High Number of Complaints </strong>
 <p align="center">
   <img src="https://github.com/devwrattanwar24/2020Fall_projects/blob/main/Graphs/HeatMap_Hour_1AM.PNG">
 </p>
 
-
 <strong> Plotting Locations of Complaints received where the slider denotes the Hour of the Day (6 AM) - Less Number of Complaints </strong>
 <p align="center">
   <img src="https://github.com/devwrattanwar24/2020Fall_projects/blob/main/Graphs/HeatMap_Hour.PNG">
+</p>
+
+<p align="center">
+  <img src="https://github.com/devwrattanwar24/2020Fall_projects/blob/main/Graphs/Complaints_by_hour.gif">
 </p>
 
 Link for Google Drive where the Future Scope Notebook is located - https://drive.google.com/drive/folders/1QSaWHZiDgzgDqJO5IKwbtJSkYClJu73G?usp=sharing </br>
